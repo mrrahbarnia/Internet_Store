@@ -8,9 +8,9 @@ from .models import (
 class MenProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "inventory"]
+    list_display = ["model_name", "price", "discount", "advertiser", "stock"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "inventory", "style", "approved", "published_date"]
+               "discount", "stock", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
 
@@ -18,9 +18,9 @@ class MenProductsAdmin(admin.ModelAdmin):
 class WomanProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "inventory"]
+    list_display = ["model_name", "price", "discount", "advertiser", "stock"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "inventory", "style", "approved", "published_date"]
+               "discount", "stock", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
     
@@ -28,9 +28,9 @@ class WomanProductsAdmin(admin.ModelAdmin):
 class KidProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "inventory"]
+    list_display = ["model_name", "price", "discount", "advertiser", "stock"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "inventory", "style", "approved", "published_date"]
+               "discount", "stock", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
     
@@ -38,9 +38,9 @@ class KidProductsAdmin(admin.ModelAdmin):
 class AccessoriesAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["accessory_name", "price", "discount", "advertiser", "inventory"]
+    list_display = ["accessory_name", "price", "discount", "advertiser", "stock"]
     fields = ["accessory_name", "image", "introduction", "advertiser", "price",
-               "discount", "inventory", "approved", "published_date"]
+               "discount", "stock", "approved", "published_date"]
     list_filter = ("approved",)
     search_fields = ["accessory_name", "advertiser"]
 
