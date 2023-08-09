@@ -90,7 +90,7 @@ class Accessories(models.Model):
     """
     These are attributes of accessories products 
     """
-    accessory_name = models.CharField(max_length=255)
+    model_name = models.CharField(max_length=255)
     introduction = models.TextField()
     image = models.ImageField(upload_to="products/Accessories", default="products/Accessories/kid.jpg")
     advertiser = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -108,7 +108,7 @@ class Accessories(models.Model):
         ordering = ["-created_date"]
 
     def __str__(self):
-        return self.accessory_name
+        return self.model_name
     
 
 class Styles(models.Model):

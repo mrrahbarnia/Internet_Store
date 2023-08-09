@@ -1612,7 +1612,9 @@ Products Page
 }
 
 #products .item .thumb img {
-  width: 100%;
+  width: 370px;
+  height: 370px;
+
   overflow: hidden;
 }
 
@@ -1730,7 +1732,8 @@ Single Product Page
 }
 
 #product .left-images img {
-  width: 100%;
+  width: 550px;
+  height: 600px;
   overflow: hidden;
   margin-bottom: 30px;
 }
