@@ -45,44 +45,36 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </div>
     <!-- ***** Preloader End ***** -->
-
-
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
 
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
-                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </li>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                                <li><a href="{% url 'website:index' %}">Home</a></li>
+                                <li><a href="{% url 'website:about' %}">About Us</a></li>
+                                <li><a href="{% url 'products:men-products' %}">Men Products</a></li>
+                                <li><a href="{% url 'products:women-products' %}">Women Products</a></li>
+                                <li><a href="{% url 'products:kids-products' %}">Kids Products</a></li>
+                                <li><a href="{% url 'products:accessories' %}">Accessories</a></li>
+                                <li><a href="{% url 'website:contact' %}">Contact Us</a></li>
+                        
 
-                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     {% block container %}
     {% endblock %}
