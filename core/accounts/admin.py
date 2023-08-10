@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ("email",)
 
     fieldsets = (
-        ("Authentication", {"fields": ("email","password")}),
+        ("Authentication", {"fields": ("email", "username", "password")}),
         ("Permissions", {"fields": ("is_staff", "is_active", "is_superuser", "groups", "user_permissions")}),
         ("Important dates", {"fields": ("last_login",)})
     )
@@ -21,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2",
+                "fields": ("email", "username", "password1", "password2", 
                            "is_active", "is_staff", "groups",
                            "user_permissions"),
             },

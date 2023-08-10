@@ -39,6 +39,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     this class defines User attributes 
     '''
     email = models.CharField(max_length=250,unique=True)
+    username = models.CharField(max_length=250)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

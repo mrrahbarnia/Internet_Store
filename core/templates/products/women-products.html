@@ -51,25 +51,33 @@
             </div>
             {% endfor %}
             <div class="col-lg-12">
+                {% if products.has_other_pages %}
                 <div class="pagination">
                     <ul>
+                        {% if products.has_previous %}
                         <li>
-                            <a href="#">1</a>
+                            <a href="?page={{products.previous_page_number}}"><</a>
                         </li>
+                        {% endif %}
+                        {% for i in products.paginator.page_range %}
+                        {% if products.number == i %}
                         <li class="active">
-                            <a href="#">2</a>
+                            <a href="?page={{i}}">{{i}}</a>
                         </li>
+                        {% else %}
                         <li>
-                            <a href="#">3</a>
+                            <a href="?page={{i}}">{{i}}</a>
                         </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if products.has_next %}
                         <li>
-                            <a href="#">4</a>
+                            <a href="?page={{products.next_page_number}}">></a>
                         </li>
-                        <li>
-                            <a href="#">></a>
-                        </li>
+                        {% endif %}
                     </ul>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>

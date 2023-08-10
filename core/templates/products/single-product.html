@@ -36,7 +36,7 @@
                     <span class="price">{{product.discount}}% off</span>
                     {% endif %}
 
-                    <span class="price">Advertiser: {{product.advertiser}}</span>
+                    <span class="price">Advertiser: {{product.advertiser.username}}</span>
                     <span class="price">Published Date: {{ product.published_date|naturaltime }}</span>
                     <span>{{product.introduction}}</span>
                     <hr>
