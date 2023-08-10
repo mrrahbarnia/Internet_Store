@@ -41,7 +41,7 @@
                         <img src="{{product.image.url}}" alt="">
                     </div>
                     <div class="down-content">
-                        <a href="{% url 'products:women-single' name=product.model_name %}"><h4>{{product.model_name}}</h4></a>
+                        <a href="{% url 'products:women-single' women_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
                         <span>${{product.price}}</span>
                         {% if product.discount > 0 %}
                         <span>{{product.discount}}% off</span>

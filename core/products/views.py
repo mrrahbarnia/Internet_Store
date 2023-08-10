@@ -33,33 +33,16 @@ def accessories_view(request):
     return render(request, "products/accessories.html",context)
 
 
-def single_men_product(request,name):
-    """This function used for connecting men_products_view to single-product"""
-    product = get_object_or_404(MenProducts, model_name = name, approved=True)
-    product.counted_views += 1
-    product.save()
-    context = {"product":product}
-    return render(request, "products/single-product.html",context)
-
-def single_women_product(request,name):
-    """This function used for connecting women_products_view to single-product"""
-    product = get_object_or_404(WomanProducts, model_name = name, approved=True)
-    product.counted_views += 1
-    product.save()
-    context = {"product":product}
-    return render(request, "products/single-product.html",context)
-
-def single_kids_product(request,name):
-    """This function used for connecting kids_products_view to single-product"""
-    product = get_object_or_404(KidProducts, model_name = name, approved=True)
-    product.counted_views += 1
-    product.save()
-    context = {"product":product}
-    return render(request, "products/single-product.html",context)
-
-def single_accessory_product(request,name):
-    """This function used for connecting accessories_view to single-product"""
-    product = get_object_or_404(Accessories, model_name = name, approved=True)
+def single_product(request, men_product=None, women_product=None, kids_product=None, accessory=None):
+    """This function used for connecting to the single-product with insertet name."""
+    if men_product:
+        product = get_object_or_404(MenProducts, model_name = men_product, approved=True)
+    elif women_product:
+        product = get_object_or_404(WomanProducts, model_name = women_product, approved=True)
+    elif kids_product:
+        product = get_object_or_404(KidProducts, model_name = kids_product, approved=True)
+    elif accessory:
+        product = get_object_or_404(Accessories, model_name = accessory, approved=True)
     product.counted_views += 1
     product.save()
     context = {"product":product}
