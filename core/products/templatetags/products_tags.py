@@ -36,6 +36,7 @@ def popular_accessories():
 
 @register.simple_tag(name="calculated_price")
 def function(price, discount):
+    """This function calculates discounted price"""
     try:
         percentage_discount = discount * Decimal("0.01")
         discounted_price =  price - (price * percentage_discount)

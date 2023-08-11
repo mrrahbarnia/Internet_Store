@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load products_tags %}
 {% load static %}
 
 {% block container %}
@@ -42,7 +43,7 @@
                     </div>
                     <div class="down-content">
                         <a href="{% url 'products:kids-single' kids_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
-                        <span>${{product.price}}</span>
+                        <span>${% calculated_price product.price product.discount_Percentage %}</span>
                         {% if product.discount_Percentage > 0 %}
                         <span>{{product.discount_Percentage}}% off</span>
                         {% endif %}

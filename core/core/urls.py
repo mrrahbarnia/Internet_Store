@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include("website.urls")),
     path('products/',include('products.urls')),
     path('accounts/',include("accounts.urls")),
+    path('captcha/', include('captcha.urls')),
 ]
 
 # this part only uses for development

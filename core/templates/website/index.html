@@ -138,7 +138,7 @@
                             </div>
                             <div class="down-content">
                                 <a href="{% url 'products:men-single' men_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
-                                <span>${{product.price}}</span>
+                                <span>${% calculated_price product.price product.discount_Percentage %}</span>
                                 {% if product.discount_Percentage > 0 %}
                                 <span>{{product.discount_Percentage}}% off</span>
                                 {% endif %}
@@ -181,9 +181,9 @@
                             </div>
                             <div class="down-content">
                                 <a href="{% url 'products:women-single' women_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
-                                <span>${{product.price}}</span>
-                                {% if product.discount > 0 %}
-                                <span>{{product.discount}}% off</span>
+                                <span>${% calculated_price product.price product.discount_Percentage %}</span>
+                                {% if product.discount_Percentage > 0 %}
+                                <span>{{product.discount_Percentage}}% off</span>
                                 {% endif %}
                                
                             </div>
@@ -225,9 +225,9 @@
                             </div>
                             <div class="down-content">
                                 <a href="{% url 'products:kids-single' kids_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
-                                <span>${{product.price}}</span>
-                                {% if product.discount > 0 %}
-                                <span>{{product.discount}}% off</span>
+                                <span>${% calculated_price product.price product.discount_Percentage %}</span>
+                                {% if product.discount_Percentage > 0 %}
+                                <span>{{product.discount_Percentage}}% off</span>
                                 {% endif %}
                                 
                             </div>
@@ -269,9 +269,9 @@
                             </div>
                             <div class="down-content">
                                 <a href="{% url 'products:accessories-single' accessory=product.model_name %}"><h4>{{product.model_name}}</h4></a>
-                                <span>${{product.price}}</span>
-                                {% if product.discount > 0 %}
-                                <span>{{product.discount}}% off</span>
+                                <span>${% calculated_price product.price product.discount_Percentage %}</span>
+                                {% if product.discount_Percentage  > 0 %}
+                                <span>{{product.discount_Percentage }}% off</span>
                                 {% endif %}
                             </div>
                         </div>
