@@ -1,6 +1,7 @@
 from django import template
 from products.models import (
     MenProducts, WomanProducts, KidProducts, Accessories)
+from decimal import Decimal
 
 register = template.Library()
 
@@ -33,3 +34,12 @@ def popular_accessories():
     return products
 
 
+@register.simple_tag(name="calculated_price")
+def function(price, discount):
+    try:
+        percentage_discount = discount * Decimal("0.01")
+        discounted_price =  price - (price * percentage_discount)
+        assert 0 <= discounted_price <= price
+        return int(discounted_price)
+    except AssertionError:
+        return price

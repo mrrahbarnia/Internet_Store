@@ -8,9 +8,9 @@ from .models import (
 class MenProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "stock", "counted_views", "approved"]
+    list_display = ["model_name", "price", "discount_Percentage", "advertiser", "stock", "counted_views", "approved"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "stock", "counted_views", "style", "approved", "published_date"]
+               "discount_Percentage", "stock", "counted_views", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
 
@@ -18,9 +18,9 @@ class MenProductsAdmin(admin.ModelAdmin):
 class WomanProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "stock", "counted_views", "approved"]
+    list_display = ["model_name", "price", "discount_Percentage", "advertiser", "stock", "counted_views", "approved"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "stock", "counted_views", "style", "approved", "published_date"]
+               "discount_Percentage", "stock", "counted_views", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
     
@@ -28,9 +28,9 @@ class WomanProductsAdmin(admin.ModelAdmin):
 class KidProductsAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "stock", "counted_views", "approved"]
+    list_display = ["model_name", "price", "discount_Percentage", "advertiser", "stock", "counted_views", "approved"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "stock", "counted_views", "style", "approved", "published_date"]
+               "discount_Percentage", "stock", "counted_views", "style", "approved", "published_date"]
     list_filter = ("style", "approved")
     search_fields = ["model_name", "advertiser", "style"]
     
@@ -38,9 +38,9 @@ class KidProductsAdmin(admin.ModelAdmin):
 class AccessoriesAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-"
-    list_display = ["model_name", "price", "discount", "advertiser", "stock", "counted_views", "approved"]
+    list_display = ["model_name", "price", "discount_Percentage", "advertiser", "stock", "counted_views", "approved"]
     fields = ["model_name", "image", "introduction", "advertiser", "price",
-               "discount", "stock", "counted_views", "approved", "published_date"]
+               "discount_Percentage", "stock", "counted_views", "approved", "published_date"]
     list_filter = ("approved",)
     search_fields = ["model_name", "advertiser"]
 
