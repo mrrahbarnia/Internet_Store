@@ -18,6 +18,20 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from website.sitemaps import WebsiteViewSitemap
+from products.sitemaps import (
+    MenProductsSitemap, WomenProductsSitemap,
+    KidProductsSitemap, AccessoriesSitemap)
+
+
+sitemaps = {
+    "static": WebsiteViewSitemap,
+    "menproducts_sitemaps":MenProductsSitemap,
+    "womenproducts-sitemaps":WomenProductsSitemap,
+    "kidsproducts-sitemaps":KidProductsSitemap,
+    "accessoriessitemaps":AccessoriesSitemap
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +39,15 @@ urlpatterns = [
     path('products/',include('products.urls')),
     path('accounts/',include("accounts.urls")),
     path('captcha/', include('captcha.urls')),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path('robots.txt', include('robots.urls')),
+    path("__debug__/", include('debug_toolbar.urls')),
+    path('summernote/', include('django_summernote.urls')),
 ]
 
 # this part only uses for development

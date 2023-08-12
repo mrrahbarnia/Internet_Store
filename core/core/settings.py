@@ -37,14 +37,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
     'django.contrib.humanize',
     "django_extensions",
     'accounts',
     'website',
     'products',
     'captcha',
+    "debug_toolbar",
+    'django_summernote',
 ]
-# django messages config
+# Django sites framework config
+SITE_ID = 2
+
+# Django-debag-toolbar config
+if DEBUG:
+    import socket 
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+
+
+# Django messages config
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -63,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'

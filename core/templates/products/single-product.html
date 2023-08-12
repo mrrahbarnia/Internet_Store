@@ -42,7 +42,7 @@
 
                     <span class="price">Advertiser: {{product.advertiser.username}}</span>
                     <span class="price">Published Date: {{ product.published_date|naturaltime }}</span>
-                    <span>{{product.introduction}}</span>
+                    <span>{{product.introduction|safe}}</span>
                     <hr>
                     
                     <span class="price">Stock: {{product.stock}}</span>

@@ -3,6 +3,7 @@ from django.contrib.contenttypes.fields import (
     GenericRelation, GenericForeignKey
     )
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -34,6 +35,9 @@ class MenProducts(models.Model):
     def __str__(self):
         return self.model_name
     
+    def get_absolute_url(self):
+        return reverse("products:men-single", kwargs={"men_product":self.model_name})
+    
 class WomanProducts(models.Model):
     """
     These are attributes of women products 
@@ -59,6 +63,8 @@ class WomanProducts(models.Model):
     def __str__(self):
         return self.model_name
     
+    def get_absolute_url(self):
+        return reverse("products:women-single", kwargs={"women_product":self.model_name})
 
 class KidProducts(models.Model):
     """
@@ -85,6 +91,9 @@ class KidProducts(models.Model):
     def __str__(self):
         return self.model_name
     
+    def get_absolute_url(self):
+        return reverse("products:kids-single", kwargs={"kids_product":self.model_name})
+    
 
 class Accessories(models.Model):
     """
@@ -109,6 +118,9 @@ class Accessories(models.Model):
 
     def __str__(self):
         return self.model_name
+    
+    def get_absolute_url(self):
+        return reverse("products:accessories-single", kwargs={"accessory":self.model_name})
     
 
 class Styles(models.Model):

@@ -2,3 +2,6 @@ Django==4.2.4
 pillow
 django-extensions
 django-simple-captcha
+django-robots
+django-debug-toolbar
+django-summernote
