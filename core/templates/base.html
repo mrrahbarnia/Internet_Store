@@ -46,42 +46,59 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Preloader End ***** -->
     <!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
 
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                                <li><a href="{% url 'website:index' %}">Home</a></li>
-                                <li><a href="{% url 'website:about' %}">About Us</a></li>
-                                <li><a href="{% url 'products:men-products' %}">Men Products</a></li>
-                                <li><a href="{% url 'products:women-products' %}">Women Products</a></li>
-                                <li><a href="{% url 'products:kids-products' %}">Kids Products</a></li>
-                                <li><a href="{% url 'products:accessories' %}">Accessories</a></li>
-                                <li><a href="{% url 'website:contact' %}">Contact Us</a></li>
-                        
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{% url 'website:index' %}">Home</a></li>
+                            <li><a href="{% url 'website:about' %}">About Us</a></li>
+                            <li><a href="{% url 'website:contact' %}">Contact Us</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Products</a>
+                                <ul>
+                                    <li><a href="{% url 'products:men-products' %}">Men Products</a></li>
+                                    <li><a href="{% url 'products:women-products' %}">Women Products</a></li>
+                                    <li><a href="{% url 'products:kids-products' %}">Kids Products</a></li>
+                                    <li><a href="{% url 'products:accessories' %}">Accessories</a></li>
+                                </ul>
+                                {% if not request.user.is_authenticated %}
+                            <li class="submenu">
+                                <a href="javascript:;">Login/Sign Up</a>
+                                <ul>
+                                    <li><a href="{% url 'accounts:login' %}?next={{request.path}}">Login</a></li>
+                                    <li><a href="{% url 'accounts:signup' %}?next={{request.path}}">Sign up</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li><a href="{% url 'accounts:logout' %}?next={{request.path}}">Logout
+                                    {{request.user.username}}</a></li>
+                            {% endif %}
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
 
-                    </ul>
-                    
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                    
-                </nav>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-    {% include "messages.html" %}
-</header>
+
+        {% include "messages.html" %}
 
 
-    {% block container %}
-    {% endblock %}
+
+    </header>
+
+    {% block bootstrap %}{% endblock %}
+    {% block container %}{% endblock %}
+
 
     <footer>
         <div class="container">

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,17 @@ INSTALLED_APPS = [
     'captcha',
     "debug_toolbar",
     'django_summernote',
+    "crispy_forms",
+    "crispy_bootstrap4",
 ]
+# Crispy forms config
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+
+# Django-multi-captcha-admin config
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
+
 # Django sites framework config
 SITE_ID = 2
 

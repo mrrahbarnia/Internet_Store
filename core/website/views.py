@@ -16,7 +16,7 @@ def contact_view(request):
             form.save()
             messages.success(request, "Your message submitted,thank you.")
             return render(request, 'website/contact.html',{"form":form})
-        messages.error(request, "Your message didn't submit.")
+        messages.error(request, "Your message didn't submit successfully.")
     form = ContactForm()
     return render(request, "website/contact.html", {"form":form})
 

@@ -4,7 +4,9 @@ from django.core.paginator import (
     Paginator, EmptyPage, PageNotAnInteger)
 from .models import (
      MenProducts, WomanProducts, KidProducts, Accessories)
-
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 # Create your views here.
 
 def men_products_view(request):
@@ -68,16 +70,19 @@ def accessories_view(request):
 
 
 def single_product(request, **kwargs):
-    """This function used for connecting to the single-product with insertet name."""
-    if kwargs.get('men_product') is not None:
-        product = get_object_or_404(MenProducts, model_name = kwargs['men_product'], approved=True)
-    if kwargs.get('women_product') is not None:
-        product = get_object_or_404(WomanProducts, model_name = kwargs['women_product'], approved=True)
-    if kwargs.get('kids_product') is not None:
-        product = get_object_or_404(KidProducts, model_name = kwargs['kids_product'], approved=True)
-    if kwargs.get('accessory') is not None:
-        product = get_object_or_404(Accessories, model_name = kwargs['accessory'], approved=True)
-    product.counted_views += 1
-    product.save()
-    context = {"product":product}
-    return render(request, "products/single-product.html",context)
+    if request.user.is_authenticated:
+        """This function used for connecting to the single-product with insertet name."""
+        if kwargs.get('men_product') is not None:
+            product = get_object_or_404(MenProducts, model_name = kwargs['men_product'], approved=True)
+        if kwargs.get('women_product') is not None:
+            product = get_object_or_404(WomanProducts, model_name = kwargs['women_product'], approved=True)
+        if kwargs.get('kids_product') is not None:
+            product = get_object_or_404(KidProducts, model_name = kwargs['kids_product'], approved=True)
+        if kwargs.get('accessory') is not None:
+            product = get_object_or_404(Accessories, model_name = kwargs['accessory'], approved=True)
+        product.counted_views += 1
+        product.save()
+        context = {"product":product}
+        return render(request, "products/single-product.html",context)
+    messages.info(request, "You must login first to see products details.")
+    return HttpResponseRedirect(reverse('accounts:login'))

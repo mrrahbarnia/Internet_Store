@@ -5,3 +5,6 @@ django-simple-captcha
 django-robots
 django-debug-toolbar
 django-summernote
+django-multi-captcha-admin
+django-crispy-forms
+crispy_bootstrap4
