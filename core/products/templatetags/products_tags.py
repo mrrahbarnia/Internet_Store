@@ -44,3 +44,8 @@ def function(price, discount):
         return int(discounted_price)
     except AssertionError:
         return price
+    
+
+@register.filter
+def to_class_name(value):
+    return value.__class__.__name__

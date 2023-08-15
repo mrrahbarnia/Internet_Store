@@ -8,6 +8,11 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+SITUATION = (
+    ('Pending','Pending'),
+    ('Approved','Approved'),
+    ('Disapproved','Disapproved')
+)
 
 # Create your models here.
 class MenProducts(models.Model):
@@ -23,7 +28,7 @@ class MenProducts(models.Model):
     stock = models.PositiveIntegerField(default=0)
     comments = GenericRelation("Comment")
     style = models.ForeignKey("Styles",on_delete=models.SET_NULL, null=True)
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     counted_views = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -51,7 +56,7 @@ class WomanProducts(models.Model):
     stock = models.PositiveIntegerField(default=0)
     comments = GenericRelation("Comment")
     style = models.ForeignKey("Styles",on_delete=models.SET_NULL, null=True)
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     counted_views = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -79,7 +84,7 @@ class KidProducts(models.Model):
     stock = models.PositiveIntegerField(default=0)
     comments = GenericRelation("Comment")
     style = models.ForeignKey("Styles",on_delete=models.SET_NULL, null=True)
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     counted_views = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -107,7 +112,7 @@ class Accessories(models.Model):
     discount_Percentage = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
     comments = GenericRelation("Comment")
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     counted_views = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -139,7 +144,7 @@ class Comment(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
     email = models.EmailField()
     comment = models.TextField()
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     

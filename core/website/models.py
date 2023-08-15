@@ -9,6 +9,11 @@ class NewsLetter(models.Model):
 
     def __str__(self):
         return self.email
+    
+    # Capitalize name and make email to lowercase
+    def clean(self):
+        self.name = self.name.capitalize()
+        self.email = self.email.lower()
 
 
 class Contact(models.Model):
@@ -19,3 +24,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+    
+    # Capitalize name and make email to lowercase
+    def clean(self):
+        self.name = self.name.capitalize()
+        self.email = self.email.lower()
