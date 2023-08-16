@@ -140,7 +140,7 @@ admin.site.register(Styles)
 class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
     empty_value_display = '-empty-'
-    list_display = ('email','content_type', 'created_date', "status", "_")
+    list_display = ('email', 'content_type', 'object_id', 'created_date', "status", "_")
     list_filter = ('email','approved')
     search_fields = ('email','comment')
     # Furnction to change the icons

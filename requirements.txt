@@ -8,3 +8,4 @@ django-summernote
 django-multi-captcha-admin
 django-crispy-forms
 crispy_bootstrap4
+django-jazzmin

@@ -1,8 +1,10 @@
 from django.urls import path
 from .views import (
     men_products_view, women_products_view, 
-    kids_products_view, accessories_view, single_product,
+    kids_products_view, accessories_view, single_product
     )
+from .feeds import (
+    MenProductsFeed, WomenProductsFeed, KidsProductsFeed, AccessoriesFeed)
 
 app_name = "products"
 
@@ -15,4 +17,8 @@ urlpatterns = [
     path('kids-products/<str:kids_product>',single_product, name = "kids-single"),
     path('accessories/', accessories_view, name = "accessories"),
     path('accessories/<str:accessory>', single_product, name = "accessories-single"),
+    path("rss/feed/", MenProductsFeed()),
+    path("rss/feed/", WomenProductsFeed()),
+    path("rss/feed/", KidsProductsFeed()),
+    path("rss/feed/", AccessoriesFeed()),
 ]

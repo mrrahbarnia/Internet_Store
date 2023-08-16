@@ -10,7 +10,7 @@
 {% endblock %}
 {% block container %}
 <br><br><br><br><br>
-<form method="post" action="{% url 'accounts:login' %}" class="card p-3 mt-5" autocomplete="off">
+<form method="post" action="{% url 'accounts:login' %}" class="card p-3 mt-5" autocomplete="off" novalidate>
     {% csrf_token %}
     <div class="row">
         <div class="col-6">
@@ -24,6 +24,10 @@
         <input type="hidden" name="next" value="{{ request.GET.next }}">
     {% endif %}
     <input type="submit" value="Login" class="btn btn-outline-primary mt-3" style="width: 90px;">
+    <br/>
+    <a href="{% url 'accounts:signup' %}">
+        <h5>Dont have an account?</h5>
+    </a>
 </form>
 {% endblock %}
 

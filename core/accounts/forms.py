@@ -27,7 +27,7 @@ class SignupForm(UserCreationForm):
     """
     This class defines fields of signup form
     """
-    email = forms.CharField(label="Email address", min_length=8, max_length=250, 
+    email = forms.CharField(label="Email address", min_length=8, max_length=20, 
                         validators=[RegexValidator(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+',message="Your email format is not correct.")],
                         widget=forms.TextInput(attrs={"placeholder":"Example: admin@admin.com"}))
     

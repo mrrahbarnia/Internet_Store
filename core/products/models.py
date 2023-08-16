@@ -4,9 +4,7 @@ from django.contrib.contenttypes.fields import (
     )
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
 SITUATION = (
     ('Pending','Pending'),
@@ -22,7 +20,7 @@ class MenProducts(models.Model):
     model_name = models.CharField(max_length=255)
     introduction = models.TextField()
     image = models.ImageField(upload_to="products/Men_Products", default="products/Men_Products/men.jpg")
-    advertiser = models.ForeignKey(User,on_delete=models.CASCADE)
+    advertiser = models.ForeignKey('accounts.User',on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     discount_Percentage = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
@@ -50,7 +48,7 @@ class WomanProducts(models.Model):
     model_name = models.CharField(max_length=255)
     introduction = models.TextField()
     image = models.ImageField(upload_to="products/Women_Products", default="products/Women_Products/women.jpg")
-    advertiser = models.ForeignKey(User,on_delete=models.CASCADE)
+    advertiser = models.ForeignKey('accounts.User',on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     discount_Percentage = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
@@ -78,7 +76,7 @@ class KidProducts(models.Model):
     model_name = models.CharField(max_length=255)
     introduction = models.TextField()
     image = models.ImageField(upload_to="products/Kid_Products", default="products/Kid_Products/kid.jpg")
-    advertiser = models.ForeignKey(User,on_delete=models.CASCADE)
+    advertiser = models.ForeignKey('accounts.User',on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     discount_Percentage = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
@@ -107,7 +105,7 @@ class Accessories(models.Model):
     model_name = models.CharField(max_length=255)
     introduction = models.TextField()
     image = models.ImageField(upload_to="products/Accessories", default="products/Accessories/kid.jpg")
-    advertiser = models.ForeignKey(User,on_delete=models.CASCADE)
+    advertiser = models.ForeignKey('accounts.User',on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     discount_Percentage = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
@@ -135,14 +133,15 @@ class Styles(models.Model):
         return self.style_name
 
 
+
 class Comment(models.Model):
     """
     This class used for comments of products
     """
+    email = models.EmailField(max_length=50)
     content_type = models.ForeignKey(ContentType,on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    email = models.EmailField()
     comment = models.TextField()
     approved = models.CharField(max_length=50,null=True,choices=SITUATION,default='Pending')
     created_date = models.DateTimeField(auto_now_add=True)
@@ -150,9 +149,12 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ["-created_date"]
+        indexes = [
+            models.Index(fields=["content_type", "object_id"]),
+        ]
 
     def __str__(self):
-        return self.email
+        return 'Comment {} by {}'.format(self.comment[:7], self.email)
 
 
 
