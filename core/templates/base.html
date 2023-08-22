@@ -76,8 +76,14 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             {% else %}
-                            <li><a href="{% url 'accounts:logout' %}?next={{request.path}}">Logout
-                                    {{request.user.username}}</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Logout/Change Password</a>
+                                <ul>
+                                    <li><a href="{% url 'accounts:logout' %}?next={{request.path}}">Logout
+                                        {{request.user.username}}</a></li>
+                                    <li><a href="{% url 'password_change' %}">Change Password</a></li>
+                                </ul>
+                            </li>
                             {% endif %}
                         </ul>
                         <a class='menu-trigger'>

@@ -9,7 +9,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 {% endblock %}
 {% block container %}
-<br><br><br><br><br>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<body>
+    <h1 class="text-center text-primary">Login</h1>
+    <br/>
+    <h6 class="text-center text-black">Enter your email address and password to login.</h6>
+</body>
 <form method="post" action="{% url 'accounts:login' %}" class="card p-3 mt-5" autocomplete="off" novalidate>
     {% csrf_token %}
     <div class="row">
@@ -23,11 +28,15 @@
     {% if request.GET.next %}
         <input type="hidden" name="next" value="{{ request.GET.next }}">
     {% endif %}
-    <input type="submit" value="Login" class="btn btn-outline-primary mt-3" style="width: 90px;">
+    <input type="submit" value="Login" class="btn btn-outline-primary mt-3">
     <br/>
-    <a href="{% url 'accounts:signup' %}">
+    <a class="text-center" href="{% url 'accounts:signup' %}">
         <h5>Dont have an account?</h5>
     </a>
+    <a class="text-center" href="{% url 'reset_password' %}">
+        <h5>Forgot password?</h5>
+    </a>
 </form>
+<br/><br/><br/><br/>
 {% endblock %}
 
