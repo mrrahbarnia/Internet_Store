@@ -3,9 +3,9 @@ from .forms import LoginForm, SignupForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout ,decorators
 from django.contrib import messages
-
 # Create your views here.
 
+# ============== This function based view set all config and instructions for login-view ============== #
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
@@ -16,7 +16,7 @@ def login_view(request):
                 user = authenticate(request, email=email, password=password)
                 if user is not None:
                     login(request, user)
-                    messages.success(request, f'Logged in as {request.user.username}')
+                    messages.success(request, f'Logged in as {request.user.email}')
                     if 'next' in request.POST:
                         return HttpResponseRedirect(request.POST.get('next'),{"form":form})
                     else:
@@ -24,9 +24,11 @@ def login_view(request):
         context = {"form":LoginForm()} 
         return render(request, "accounts/login.html", context)
     else:
-        messages.info(request, f"You have already loged in before as {request.user.username}.")
+        messages.info(request, f"You have already loged in before as {request.user.email}.")
         return HttpResponseRedirect('/',{"form":LoginForm()})
     
+
+# ============== This function based view set all config and instructions for logout-view, this function required to login first  ============== #
 @decorators.login_required()
 def logout_view(request):
     logout(request)
@@ -36,7 +38,7 @@ def logout_view(request):
     else:
         return HttpResponseRedirect('/')
 
-
+# ============== This function based view set all config and instructions for signup-view ============== #
 def signup_view(request):
     if not request.user.is_authenticated:
         if request.method == "POST":

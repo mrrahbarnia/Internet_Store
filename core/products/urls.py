@@ -8,6 +8,7 @@ from .feeds import (
 
 app_name = "products"
 
+
 urlpatterns = [
     path('men-products/', men_products_view, name = "men-products"),
     path('men-products/<str:men_product>', single_product, name = "men-single"),

@@ -41,9 +41,12 @@ class SignupForm(UserCreationForm):
                 widget= forms.PasswordInput(attrs={"autocomplete": "new-password","placeholder":"Enter the same password as before"}))
     class Meta:
         model = User
-        fields = ["email", "password1", "password2"]
+        fields = ["email", "username", "password1", "password2"]
 
 class PasswordResetForm(PasswordResetForm):
+    """
+    This class defines the field of password-reset-form which is just one
+    """
     email = forms.CharField(label="Email address", min_length=8, max_length=50, 
                             validators=[RegexValidator(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+',
                             message="Your email format is not correct.")],
@@ -53,6 +56,9 @@ class PasswordResetForm(PasswordResetForm):
         fields = ["email"]
 
 class SetPasswordForm(SetPasswordForm):
+    """
+    This class defines all fields of set-password-form
+    """
     new_password1 = forms.CharField(label=("New Password"),strip=False, min_length=5, max_length=50,
                     widget=forms.PasswordInput(attrs={"autocomplete": "new-password",
                     "placeholder":"Password must be a bit complex"}),)
@@ -61,6 +67,9 @@ class SetPasswordForm(SetPasswordForm):
                     "placeholder":"Enter the same password as new password field"}),)
     
 class PasswordChangeForm(PasswordChangeForm):
+    """
+    This class defines all fields of password-change-form
+    """
     old_password = forms.CharField(label=("Old Password"),strip=False, min_length=5, max_length=50,
                     widget=forms.PasswordInput(attrs={"autocomplete": "new-password",
                     "placeholder":"Enter your old password"}),)

@@ -2,7 +2,7 @@ from django.contrib.syndication.views import Feed
 from .models import (
     WomanProducts, MenProducts, KidProducts, Accessories)
 
-
+# ============ Men products rss feed ============ #
 class MenProductsFeed(Feed):
     title = "Men products"
     link = "rss/feed/"
@@ -16,7 +16,9 @@ class MenProductsFeed(Feed):
 
     def item_description(self, item):
         return item.introduction[:100]
-    
+
+
+# ============ women products rss feed ============ #
 class WomenProductsFeed(Feed):
     title = "Women products"
     link = "rss/feed/"
@@ -30,7 +32,9 @@ class WomenProductsFeed(Feed):
 
     def item_description(self, item):
         return item.introduction[:100]
-    
+
+
+# ============ kids products rss feed ============ #
 class KidsProductsFeed(Feed):
     title = "Kids products"
     link = "rss/feed/"
@@ -44,8 +48,9 @@ class KidsProductsFeed(Feed):
 
     def item_description(self, item):
         return item.introduction[:100]
-    
 
+
+# ============ accessories rss feed ============ #
 class AccessoriesFeed(Feed):
     title = "Accesories"
     link = "rss/feed/"

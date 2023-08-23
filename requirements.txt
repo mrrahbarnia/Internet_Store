@@ -16,3 +16,5 @@ html5lib
 calmjs.parse
 csscompressor
 brotli
+python-decouple
+mysqlclient

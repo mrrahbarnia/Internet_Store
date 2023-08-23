@@ -72,6 +72,7 @@ def accessories_view(request):
 
 
 def single_product(request, **kwargs):
+    """This function defines how to show products in single-product template"""
     if request.user.is_authenticated:
         if request.method == "GET":
             """This function used for connecting to the single-product with insertet name."""

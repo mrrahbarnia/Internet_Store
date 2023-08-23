@@ -4,6 +4,7 @@ from .models import User
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
+    """ This class is for exhibiting user model in admin panel """
     model = User
     list_display = ["email", "is_staff", "is_active"]
     list_filter = ["email", "is_staff", "is_active"]

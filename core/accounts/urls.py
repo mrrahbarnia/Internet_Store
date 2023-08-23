@@ -5,7 +5,10 @@ from .views import (
 app_name = "accounts"
 
 urlpatterns = [
+    # ========== Login URL ========== #
     path('login/', login_view, name = "login"),
+    # ========== Signup URL ========== #
     path('signup/', signup_view, name = 'signup'),
+    # ========== Logout URL ========== #
     path('logout/', logout_view, name = 'logout')
 ]

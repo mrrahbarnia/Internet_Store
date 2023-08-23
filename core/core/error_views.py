@@ -1,6 +1,6 @@
 from django.shortcuts import render 
 
-# These function based views render errors 
+# =========== All these function based views customized for error that might be occurred in production =========== #
 
 def error_404(request, expection):
     context = {"expection":expection}

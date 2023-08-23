@@ -5,6 +5,7 @@ from products.models import (
     MenProducts, WomanProducts, KidProducts, Accessories)
 
 
+# ============ Men products sitemap which show in sitemap.xml ============ #
 class MenProductsSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.5
@@ -16,7 +17,7 @@ class MenProductsSitemap(Sitemap):
         return reverse('products:men-single', kwargs={'men_product':item.model_name})
     
 
-
+# ============ Women products sitemap which show in sitemap.xml ============ #
 class WomenProductsSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.5
@@ -28,6 +29,7 @@ class WomenProductsSitemap(Sitemap):
         return reverse('products:women-single', kwargs={'women_product':item.model_name})
     
 
+# ============ Kids products sitemap which show in sitemap.xml ============ #
 class KidProductsSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.5
@@ -39,6 +41,7 @@ class KidProductsSitemap(Sitemap):
         return reverse('products:kids-single', kwargs={'kids_product':item.model_name})
     
 
+# ============ Accessories sitemap which show in sitemap.xml ============ #
 class AccessoriesSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.5
