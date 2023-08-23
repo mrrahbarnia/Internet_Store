@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)v&-fz8rs1yjqwdimswmc5eimbf7m9(ey5-)d(*4sjn#dfc-_w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -54,7 +54,18 @@ INSTALLED_APPS = [
     'django_summernote',
     "crispy_forms",
     "crispy_bootstrap4",
+    "compressor",
 ]
+
+# Django-compressor config
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 
 # Google SMTP server configue
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -75,11 +86,10 @@ MULTI_CAPTCHA_ADMIN = {
 # Django sites framework config
 SITE_ID = 2
 
-# Django-debag-toolbar config
-if DEBUG:
-    import socket 
-    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
-    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+# Django-debug-toolbar config
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 
 # Django messages config

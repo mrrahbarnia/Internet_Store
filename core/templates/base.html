@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,7 @@
 
 
     <!-- Additional CSS Files -->
+    {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
@@ -25,6 +27,7 @@
     <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    {% endcompress %}
     <!--
 
 TemplateMo 571 Hexashop
@@ -166,6 +169,7 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- jQuery -->
+    {% compress js %}
     <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 
     <!-- Bootstrap -->
@@ -186,6 +190,7 @@ https://templatemo.com/tm-571-hexashop
 
     <!-- Global Init -->
     <script src="{% static 'js/custom.js' %}"></script>
+    {% endcompress %}
 
     <script>
 

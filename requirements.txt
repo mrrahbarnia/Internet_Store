@@ -9,3 +9,10 @@ django-multi-captcha-admin
 django-crispy-forms
 crispy_bootstrap4
 django-jazzmin
+django_compressor
+beautifulsoup4
+lxml
+html5lib
+calmjs.parse
+csscompressor
+brotli
