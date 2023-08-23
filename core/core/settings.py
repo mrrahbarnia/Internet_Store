@@ -23,10 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)v&-fz8rs1yjqwdimswmc5eimbf7m9(ey5-)d(*4sjn#dfc-_w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
+# Captcha config 
+CAPTCHA_FONT_SIZE = 40
 
 # Application definition
 

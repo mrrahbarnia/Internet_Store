@@ -58,7 +58,7 @@
     </div>
   </div>
 </section>
-<br>
+<br /><br /><br /><br /><br /><br />
 <!---Commenting area-->
 <div class="row d-flex justify-content-center">
   <div class="col-md-8 col-lg-6">
@@ -67,7 +67,8 @@
         <form method="post">
           {% csrf_token %}
           <div class="form-outline mb-10">
-            <input type="text" name="comment" class="form-control" placeholder="Tell us you view,we can keep in touch {{request.user.email}}" />
+            <input type="text" name="comment" class="form-control"
+              placeholder="Tell us your view,we can keep in touch {{request.user.email}}" />
             <input type="hidden" name="email" value="{{request.user.email}}">
             <input type="hidden" name="object_id" value="{{product.id}}">
             <input type="hidden" name="content_type" value="{{product}}">
@@ -75,11 +76,12 @@
             <button type="submit" class="btn btn-outline-primary mt-3" style="width: 90px;">Submit</button>
           </div>
         </form>
+        <br />
         {% for comment in comments %}
         <div class="card mb-4">
           <div class="card-body">
             <p>{{comment.comment}}</p>
-            <hr/>
+            <hr />
             <small>via {{comment.email}} on {{comment.created_date|timesince}} ago</small>
           </div>
         </div>

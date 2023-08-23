@@ -58,3 +58,9 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+#================ Customize errors ================#
+handler404 = 'core.error_views.error_404' # Page not found
+handler400 = 'core.error_views.error_400' # Bad request
+handler403 = 'core.error_views.error_403' # Forbidden response
+handler500 = 'core.error_views.error_500' # Server error

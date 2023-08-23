@@ -45,8 +45,9 @@ class SignupForm(UserCreationForm):
 
 class PasswordResetForm(PasswordResetForm):
     email = forms.CharField(label="Email address", min_length=8, max_length=50, 
-            validators=[RegexValidator(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+',message="Your email format is not correct.")],
-            widget=forms.TextInput(attrs={"placeholder":"Example: admin@admin.com"}))
+                            validators=[RegexValidator(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+',
+                            message="Your email format is not correct.")],
+                            widget=forms.TextInput(attrs={"placeholder":"Example: admin@admin.com"}))
     class Meta:
         model = User
         fields = ["email"]
@@ -69,4 +70,6 @@ class PasswordChangeForm(PasswordChangeForm):
     new_password2 = forms.CharField(label=("New Password Confirmation"),strip=False, min_length=5, max_length=50,
                     widget=forms.PasswordInput(attrs={"autocomplete": "new-password",
                     "placeholder":"Enter the same password as new password field"}),)
+
+
 
