@@ -9,7 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
 
 # ALLOWED_HOSTS CONFIG
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = ['mrrahbarnia.com','www.mrrahbarnia.com']
 
 # INSTALLED_APPS = []
 

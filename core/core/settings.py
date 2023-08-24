@@ -27,7 +27,8 @@ CAPTCHA_FONT_SIZE = 40
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'jet.dashboard',
+    'jet',
     'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -21,6 +21,8 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path(r'jet/', include('jet.urls', 'jet')),
+    path(r'jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     #======== Admin panel url ========#
     path('admin/', admin.site.urls),
     #======== Website app urls ========#

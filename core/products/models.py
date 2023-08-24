@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import (
     )
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 
 SITUATION = (
@@ -31,6 +32,7 @@ class MenProducts(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField()
+    slug = models.SlugField(null=True,blank=True)
 
     class Meta:
         ordering = ["-created_date"]
@@ -41,6 +43,11 @@ class MenProducts(models.Model):
     def get_absolute_url(self):
         return reverse("products:men-single", kwargs={"men_product":self.model_name})
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.model_name)
+        return super().save(*args, **kwargs)
+
+
 class WomanProducts(models.Model):
     """
     These are attributes of women products 
@@ -59,6 +66,7 @@ class WomanProducts(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField()
+    slug = models.SlugField(null=True,blank=True)
 
     class Meta:
         ordering = ["-created_date"]
@@ -68,6 +76,11 @@ class WomanProducts(models.Model):
     
     def get_absolute_url(self):
         return reverse("products:women-single", kwargs={"women_product":self.model_name})
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.model_name)
+        return super().save(*args, **kwargs)
+
 
 class KidProducts(models.Model):
     """
@@ -87,6 +100,7 @@ class KidProducts(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField()
+    slug = models.SlugField(null=True,blank=True)
 
     class Meta:
         ordering = ["-created_date"]
@@ -96,6 +110,11 @@ class KidProducts(models.Model):
     
     def get_absolute_url(self):
         return reverse("products:kids-single", kwargs={"kids_product":self.model_name})
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.model_name)
+        return super().save(*args, **kwargs)
+
     
 
 class Accessories(models.Model):
@@ -115,6 +134,7 @@ class Accessories(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField()
+    slug = models.SlugField(null=True,blank=True)
 
     class Meta:
         ordering = ["-created_date"]
@@ -124,6 +144,11 @@ class Accessories(models.Model):
     
     def get_absolute_url(self):
         return reverse("products:accessories-single", kwargs={"accessory":self.model_name})
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.model_name)
+        return super().save(*args, **kwargs)
+
     
 
 class Styles(models.Model):

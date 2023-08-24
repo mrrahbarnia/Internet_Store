@@ -78,16 +78,16 @@ def single_product(request, **kwargs):
             """This function used for connecting to the single-product with insertet name."""
             if kwargs.get('men_product') is not None:
                 content_type = ContentType.objects.get_for_model(MenProducts)
-                product = get_object_or_404(MenProducts, model_name = kwargs['men_product'], approved="Approved")
+                product = get_object_or_404(MenProducts, slug = kwargs['men_product'], approved="Approved")
             if kwargs.get('women_product') is not None:
                 content_type = ContentType.objects.get_for_model(WomanProducts)
-                product = get_object_or_404(WomanProducts, model_name = kwargs['women_product'], approved="Approved")
+                product = get_object_or_404(WomanProducts, slug = kwargs['women_product'], approved="Approved")
             if kwargs.get('kids_product') is not None:
                 content_type = ContentType.objects.get_for_model(KidProducts)
-                product = get_object_or_404(KidProducts, model_name = kwargs['kids_product'], approved="Approved")
+                product = get_object_or_404(KidProducts, slug = kwargs['kids_product'], approved="Approved")
             if kwargs.get('accessory') is not None:
                 content_type = ContentType.objects.get_for_model(Accessories)
-                product = get_object_or_404(Accessories, model_name = kwargs['accessory'], approved="Approved")
+                product = get_object_or_404(Accessories, slug = kwargs['accessory'], approved="Approved")
             object_id = product.id
             comments = Comment.objects.filter(content_type=content_type, object_id=object_id, approved="Approved")
             product.counted_views += 1

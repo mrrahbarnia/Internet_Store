@@ -137,7 +137,7 @@
                                 <img src="{{product.image.url}}" alt="">
                             </div>
                             <div class="down-content">
-                                <a href="{% url 'products:men-single' men_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
+                                <a href="{% url 'products:men-single' men_product=product.model_name|slugify %}"><h4>{{product.model_name}}</h4></a>
                                 <span>${% calculated_price product.price product.discount_Percentage %}</span>
                                 {% if product.discount_Percentage > 0 %}
                                 <span>{{product.discount_Percentage}}% off</span>
@@ -180,7 +180,7 @@
                                 <img src="{{product.image.url}}" alt="">
                             </div>
                             <div class="down-content">
-                                <a href="{% url 'products:women-single' women_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
+                                <a href="{% url 'products:women-single' women_product=product.model_name|slugify %}"><h4>{{product.model_name}}</h4></a>
                                 <span>${% calculated_price product.price product.discount_Percentage %}</span>
                                 {% if product.discount_Percentage > 0 %}
                                 <span>{{product.discount_Percentage}}% off</span>
@@ -224,7 +224,7 @@
                                 <img src="{{product.image.url}}" alt="">
                             </div>
                             <div class="down-content">
-                                <a href="{% url 'products:kids-single' kids_product=product.model_name %}"><h4>{{product.model_name}}</h4></a>
+                                <a href="{% url 'products:kids-single' kids_product=product.model_name|slugify %}"><h4>{{product.model_name}}</h4></a>
                                 <span>${% calculated_price product.price product.discount_Percentage %}</span>
                                 {% if product.discount_Percentage > 0 %}
                                 <span>{{product.discount_Percentage}}% off</span>
@@ -268,7 +268,7 @@
                                 <img src="{{product.image.url}}" alt="">
                             </div>
                             <div class="down-content">
-                                <a href="{% url 'products:accessories-single' accessory=product.model_name %}"><h4>{{product.model_name}}</h4></a>
+                                <a href="{% url 'products:accessories-single' accessory=product.model_name|slugify %}"><h4>{{product.model_name}}</h4></a>
                                 <span>${% calculated_price product.price product.discount_Percentage %}</span>
                                 {% if product.discount_Percentage  > 0 %}
                                 <span>{{product.discount_Percentage }}% off</span>
