@@ -22,7 +22,7 @@ DATABASES = {
 }
 
 # Django sites framework config
-SITE_ID = 2
+SITE_ID = 4
 
 # Static and media roots
 STATIC_ROOT = BASE_DIR / "static"
@@ -30,3 +30,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
+X_FRAME_OPTIONS = 'SAMEORIGIN'

@@ -14,7 +14,7 @@ class MenProductsSitemap(Sitemap):
     def lastmod(self, obj):
         return obj.published_date
     def location(self, item):
-        return reverse('products:men-single', kwargs={'men_product':item.model_name})
+        return reverse('products:men-single', kwargs={'men_product':item.slug})
     
 
 # ============ Women products sitemap which show in sitemap.xml ============ #

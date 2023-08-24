@@ -80,7 +80,7 @@
         {% for comment in comments %}
         <div class="card mb-4">
           <div class="card-body">
-            <p>{{comment.comment}}</p>
+            <p class="text-primary">{{comment.comment}}</p>
             <hr />
             <small>via {{comment.email}} on {{comment.created_date|timesince}} ago</small>
           </div>

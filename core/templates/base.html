@@ -1,10 +1,23 @@
 {% load static %}
 {% load compress %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <script nonce="{{ CSP_NONCE }}" async type="application/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXX"></script>
+    <script nonce="{{ CSP_NONCE }}" type="application/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXX');
+    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,7 +96,7 @@ https://templatemo.com/tm-571-hexashop
                                 <a href="javascript:;">Logout/Change Password</a>
                                 <ul>
                                     <li><a href="{% url 'accounts:logout' %}?next={{request.path}}">Logout
-                                        {{request.user.username}}</a></li>
+                                            {{request.user.username}}</a></li>
                                     <li><a href="{% url 'password_change' %}">Change Password</a></li>
                                 </ul>
                             </li>

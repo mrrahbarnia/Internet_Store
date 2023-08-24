@@ -18,3 +18,5 @@ brotli
 python-decouple
 mysqlclient
 django-jet-reboot
+django-csp
+django-referrer-policy

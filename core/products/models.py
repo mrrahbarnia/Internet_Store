@@ -40,12 +40,13 @@ class MenProducts(models.Model):
     def __str__(self):
         return self.model_name
     
-    def get_absolute_url(self):
-        return reverse("products:men-single", kwargs={"men_product":self.model_name})
-    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.model_name)
         return super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("products:men-single", kwargs={"men_product":self.slug})
+    
 
 
 class WomanProducts(models.Model):
@@ -74,12 +75,14 @@ class WomanProducts(models.Model):
     def __str__(self):
         return self.model_name
     
-    def get_absolute_url(self):
-        return reverse("products:women-single", kwargs={"women_product":self.model_name})
-    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.model_name)
         return super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("products:women-single", kwargs={"women_product":self.slug})
+    
+    
 
 
 class KidProducts(models.Model):
@@ -108,13 +111,13 @@ class KidProducts(models.Model):
     def __str__(self):
         return self.model_name
     
-    def get_absolute_url(self):
-        return reverse("products:kids-single", kwargs={"kids_product":self.model_name})
-    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.model_name)
         return super().save(*args, **kwargs)
-
+    
+    def get_absolute_url(self):
+        return reverse("products:kids-single", kwargs={"kids_product":self.slug})
+    
     
 
 class Accessories(models.Model):
@@ -141,14 +144,13 @@ class Accessories(models.Model):
 
     def __str__(self):
         return self.model_name
-    
-    def get_absolute_url(self):
-        return reverse("products:accessories-single", kwargs={"accessory":self.model_name})
-    
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.model_name)
         return super().save(*args, **kwargs)
-
+    
+    def get_absolute_url(self):
+        return reverse("products:accessories-single", kwargs={"accessory":self.slug})
     
 
 class Styles(models.Model):
@@ -156,8 +158,6 @@ class Styles(models.Model):
 
     def __str__(self):
         return self.style_name
-
-
 
 class Comment(models.Model):
     """

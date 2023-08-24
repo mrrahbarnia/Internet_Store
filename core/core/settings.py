@@ -24,6 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Captcha config 
 CAPTCHA_FONT_SIZE = 40
 
+# Django sites framework config
+SITE_ID = 4
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
 ]
 
+
 # Django-compressor config
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -79,8 +83,6 @@ MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
 
-# Django sites framework config
-SITE_ID = 2
 
 # Django-debug-toolbar config
 INTERNAL_IPS = [
@@ -100,6 +102,7 @@ MESSAGE_TAGS = {
 
 
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,6 +111,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django_referrer_policy.middleware.ReferrerPolicyMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -123,6 +127,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'csp.context_processors.nonce',
             ],
         },
     },
@@ -178,3 +183,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user config
 AUTH_USER_MODEL = "accounts.User"
+
+REFERRER_POLICY = 'same-origin'
